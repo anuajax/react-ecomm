@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './homePage.styles.scss';
-import MenuItem from './menuComp';
+import MenuList from './menuComp';
 const Home = () => (
     <div className="homepage">
-        <MenuItem/>
+        <MenuList/>
     </div>
 )
 export default Home;
