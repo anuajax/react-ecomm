@@ -64,7 +64,7 @@ const sections = [
 const MenuList = () => (
     <div className="menu-directory">
         {sections.map(section => (<MenuItem key={section.id} title={section.title} imageUrl={section.imageUrl} 
-         size={section.size}/>))}
+         size={section.size} linkUrl={section.linkUrl}/>))}
     </div>
 )
 export default MenuList;
