@@ -1,0 +1,24 @@
+.preview-collection-item{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flex-preview-items{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex: 1 1 auto;
+    margin: 0 7.5px 15px;
+}
+.view-more{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.fa-arrow-circle-right
+{
+    font-size: 35px;
+}
