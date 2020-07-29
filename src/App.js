@@ -6,31 +6,40 @@ import {Route,Switch} from 'react-router-dom';
 import ShopPage from './components/Pages.Container.Components/shopCollections.jsx';
 import Navigation from './components/HeaderNav/header.comp.jsx';
 import SignInAndSignUp from './components/Pages.Container.Components/LoginRegister/login-register';
-import {auth} from './firebase/firebase.utils';
-class App extends Component {
-  constructor()
-  {
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+class App extends React.Component {
+  constructor() {
     super();
-    this.state={
+
+    this.state = {
       currentUser: null
-    }
+    };
   }
 
-unSubscribeFromAuth = null;
+  unsubscribeFromAuth = null;
 
-  componentDidMount()
-  {
-   this.unSubscribeFromAuth =  auth.onAuthStateChanged(user => {
-      this.setState({currentUser:user});
-      console.log(user);
-    })
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          },()=>{console.log(this.state)});
+        });
+      }
+
+      this.setState({ currentUser: userAuth });
+    });
   }
 
-  componentWillUnmount()
-  {
-    this.unSubscribeFromAuth();
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
   }
-
   render()
   {
     
