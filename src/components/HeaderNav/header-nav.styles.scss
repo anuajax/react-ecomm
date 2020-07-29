@@ -1,0 +1,47 @@
+.header-nav {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  
+    .logo {
+      height: 100%;
+      width: 70px;
+      padding: 15px;
+    }
+  
+    .nav-items {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+     
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #031D44;
+      
+      
+      position: relative;
+      
+      .nav-item {
+        padding: 0px 15px;
+       &::before{
+        transition: 300ms;
+        height: 2px;
+        content: "";
+        position: absolute;
+        background-color: black;
+       }
+      
+      }
+    }
+  }
+  .nav-item-ltr::before {
+    width: 0%;
+    bottom: 5px;
+  }
+  
+  .nav-item-ltr:hover::before {
+    width: 6ex;  }
