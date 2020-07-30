@@ -5,7 +5,8 @@ import {Card} from '@material-ui/core';
 import {ReactComponent as Google} from '../../../assets/google-icon.svg';
 import './signin.styles.scss';
 
-import {signInWithGoogle} from '../../../firebase/firebase.utils';
+import {auth, signInWithGoogle} from '../../../firebase/firebase.utils';
+
 class SignIn extends Component
 {
     constructor()
@@ -16,11 +17,17 @@ class SignIn extends Component
             password:""
         }
     }
-    handleSubmit=(event)=>
+    handleSubmit = async event =>
     {
         event.preventDefault();
-        
-        this.setState({email:'',password:''})
+        const {email,password} = this.state;
+        try {
+            await auth.signInWithEmailAndPassword(email,password);
+            this.setState({email:'',password:''});
+        } catch (error) {
+            console.log(error);
+        }
+       
     }
     handleChange = (event) => {
         const value = event.target.value;
