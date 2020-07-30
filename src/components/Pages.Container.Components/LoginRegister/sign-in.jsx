@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import FormInput from '../../Sign-In-Up.form components/formInput';
-import CustomButton from '../../Sign-In-Up.form components/form-buttons';
-import {Card,Button,ButtonGroup} from '@material-ui/core';
+import FormInput from '../../form components/formInput';
+import CustomButton from '../../form components/form-buttons';
+import {Card} from '@material-ui/core';
 import {ReactComponent as Google} from '../../../assets/google-icon.svg';
 import './signin.styles.scss';
 
@@ -19,6 +19,7 @@ class SignIn extends Component
     handleSubmit=(event)=>
     {
         event.preventDefault();
+        
         this.setState({email:'',password:''})
     }
     handleChange = (event) => {
@@ -30,9 +31,10 @@ class SignIn extends Component
     render()
     {
         return(
-            <div className="signin">
             
-            <h3>SignIn with your email and password.</h3>
+            <div className="signin">
+           
+            <h2>SignIn with your email and password.</h2>
                 <form onSubmit={this.handleSubmit}>
                     <FormInput type="email" name="email" value={this.state.email} handleChange={this.handleChange} 
                                 label="E-mail" required/>
@@ -53,6 +55,7 @@ class SignIn extends Component
                 </form>
            
             </div>
+            
         )
     }
 }
