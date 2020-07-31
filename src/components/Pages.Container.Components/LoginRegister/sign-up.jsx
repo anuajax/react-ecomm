@@ -33,6 +33,8 @@ class SignUp extends Component
            this.setState({displayName:'',email:'',password:'',confirmPassword:''});
         } catch (error) {
             console.log(error);
+            alert(error.message);
+            
         }
       
     }

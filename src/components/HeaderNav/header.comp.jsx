@@ -4,6 +4,8 @@ import {ReactComponent as Logo} from '../../assets/4.3 crown.svg.svg';
 import { Link} from 'react-router-dom';
 import {ReactComponent as LikeButton} from '../../assets/icons8-heart-outline-24.png';
 import {auth} from '../../firebase/firebase.utils';
+import {connect}  from 'react-redux';
+
 const Navigation = ({currentUser}) => (
     <div className="header-nav">
         <Link to="/">
@@ -21,4 +23,8 @@ const Navigation = ({currentUser}) => (
          </div>
     </div>
 )
-export default Navigation;
+const mapStateToProps = (state) => ({
+    currentUser: state.user.currentUser
+})
+export default connect(mapStateToProps)(Navigation);
+//mapStateToProps and connect will be written anywhere, if we want properties from reducers
