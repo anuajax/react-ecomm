@@ -1,0 +1,19 @@
+.item-count{
+    position: absolute;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.shopping-icon{
+    width: 24px;
+    height: 24px;
+}
+.cart-icon{
+    width: 45px;
+    height: 45px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
