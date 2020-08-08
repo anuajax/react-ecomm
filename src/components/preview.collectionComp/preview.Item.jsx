@@ -7,7 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {ReactComponent as LikeButton} from '../../assets/icons8-heart-outline-24.png';
+
+import {connect} from 'react-redux';
+import {addItemsAction}  from '../../redux/actions/actionCreators/cart-drop.actions.creator.js'
+
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 240,
@@ -20,10 +24,11 @@ const useStyles = makeStyles({
 });
 
 
-const PreviewItem = ({name,price,imageUrl}) => {
+const PreviewItem = ({item, addItemsAction}) => {
+  const { name,price,imageUrl } = item;
     const classes = useStyles();
+    
     return (
-     
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia className={classes.media}
@@ -39,12 +44,14 @@ const PreviewItem = ({name,price,imageUrl}) => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">Add to Cart</Button>
+          <Button size="small" color="primary" onClick={() => addItemsAction(item)}>Add to Cart</Button>
          
           <Button size="small" color="primary">Add to fav</Button>
         </CardActions>
       </Card>
     );
 }
-
-export default PreviewItem;
+const mapDispatchToProps = (dispatch) => ({
+  addItemsAction: (item) => dispatch(addItemsAction(item))
+});
+export default connect(null,mapDispatchToProps)(PreviewItem);

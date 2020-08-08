@@ -9,7 +9,7 @@ const CartIcon = ({ toggleCartDropDown })=> (
         <ShoppingIcon className='shopping-icon'/>
         <span className='item-count'> 0 </span>
     </div>
-)
+) 
 
 
 const mapDispatchToProps = (dispatch) => ({

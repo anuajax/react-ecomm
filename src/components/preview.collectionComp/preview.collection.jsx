@@ -1,6 +1,6 @@
 import React from 'react';
 import PreviewItem from './preview.Item';
-import {IconButton,Icon} from '@material-ui/core';
+import {IconButton} from '@material-ui/core';
 import './preview.Coll.styles.scss'
  const PreviewCollection =({id,title,items}) => (
     <div className="preview-collection-item">
@@ -13,7 +13,7 @@ import './preview.Coll.styles.scss'
         
         <div  className="flex-preview-items">
         {items.filter((item,index)=>index<5).map(item => (
-            <PreviewItem key={id} name={item.name} imageUrl={item.imageUrl} price={item.price}/>
+            <PreviewItem key={item.id} item={item}/>
         ))}
         
         </div>
