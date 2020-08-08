@@ -7,6 +7,13 @@ import {auth} from '../../firebase/firebase.utils';
 import {connect}  from 'react-redux';
 import CartIcon from '../cart-Icon/cart-icon.component';
 import CartDropdown from '../cart-DropDown/cart-dropdown';
+
+
+import {selectCurrentUser} from '../../redux/selectors/user.selectors';
+import {selectCartHidden}  from '../../redux/selectors/cart.selectors';
+import {createStructuredSelector} from 'reselect';
+
+
 const Navigation = ({currentUser,hidden}) => (
     <div className="header-nav">
         <Link to="/">
@@ -27,9 +34,9 @@ const Navigation = ({currentUser,hidden}) => (
     </div>
 )
 //advanced destructuring: state
-const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => ({
-    currentUser,
-    hidden
+const mapStateToProps = (state) => ({
+    currentUser: selectCurrentUser(state),
+    hidden: selectCartHidden(state)
 })
 export default connect(mapStateToProps)(Navigation);
 //mapStateToProps and connect will be written anywhere, if we want properties from reducers
