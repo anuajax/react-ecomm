@@ -7,6 +7,8 @@ import ShopPage from './components/Pages.Container.Components/shopCollections.js
 import Navigation from './components/HeaderNav/header.comp.jsx';
 import SignInAndSignUp from './components/Pages.Container.Components/LoginRegister/login-register';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import Checkout from './components/Pages.Container.Components/checkoutPage/checkout.copmponent';
+
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/actions/actionCreators/user.actions.creator';
 import {createStructuredSelector} from 'reselect';
@@ -46,6 +48,8 @@ class App extends React.Component {
     <Route exact path='/' component={Home} />
     <Route exact path='/shop' component={ShopPage} />
     <Route exact path='/signin' render={()=>this.props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUp/>) }/>
+    <Route exact path='/checkout' component={Checkout}/>
+
 </Switch>
     </div>
   );

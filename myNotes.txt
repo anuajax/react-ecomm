@@ -16,3 +16,7 @@ This is always re-rendering our componnets
  into createSelector and pass it back To mapStateToProps .
 
  Now onWards all code related to selectors basically mapStateToprops ..we will write it using Reselect library.
+
+
+ if you dont pass mapDispatchToProps in connect statemnt what it does is...it adds a prop called dispatch to the component.
+ So if we have only one action to dispatch we dont need to write the mapDispatchToProps function..

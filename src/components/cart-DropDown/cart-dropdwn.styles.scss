@@ -12,7 +12,10 @@
     z-index: 5;
     background-color: rgb(200, 219, 253);
     
-  
+    .empty-message{
+      font-size: 20px;
+      margin: 50px auto;
+    }
     .cart-items-list {
       height: 240px;
       display: flex;
