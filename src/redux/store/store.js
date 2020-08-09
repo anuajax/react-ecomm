@@ -3,8 +3,11 @@ import { createStore,applyMiddleware } from 'redux';
 //recieve actions in do something with thme and pass to root reducer
 import logger from 'redux-logger';
 import rootReducer from '../reducers/rootReducer';
+import {persistStore} from 'redux-persist';
 
 const middlewares = [logger];
 
-const store = createStore(rootReducer,applyMiddleware(...middlewares));
-export default store;
+export const store = createStore(rootReducer,applyMiddleware(...middlewares));
+
+export const persistor = persistStore(store);
+export default {store,persistor};
