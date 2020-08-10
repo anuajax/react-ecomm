@@ -2,10 +2,11 @@
   width: 100%;
   display: flex;
   min-height: 100px;
-  border-bottom: 1px solid darkgrey;
+  border: 1px solid lightgrey;
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
+  margin-bottom: 10px;
 
   .image-container {
     width: 23%;
