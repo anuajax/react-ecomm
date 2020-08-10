@@ -33,3 +33,7 @@ This is always re-rendering our componnets
         add to store.js in redux store
 
     
+# Nested Routing (routing from a component or a page rather than from App.js)
+      eg: /shop to /shop/hats
+      moved all the shop page collection logic into its child component(CollectionOverview) (connected to redux obviously)
+      then apply Switch and Router in the Shop collection component.
