@@ -57,3 +57,9 @@ This is always re-rendering our componnets
      so CollectionsOverview is giving error...
      lets write a new selector for it which convert Object into an Array
   ## Object.keys()
+
+
+
+  # Integrating Stripe
+      Got the test mode ..
+      to do real payment need to work out with the token and write some backend code
