@@ -12,7 +12,7 @@ import './preview.Coll.styles.scss'
     </div>
         
         <div  className="flex-preview-items">
-        {items.filter((item,index)=>index<5).map(item => (
+        {items.filter((item,index)=>index<4).map(item => (
             <PreviewItem key={item.id} item={item}/>
         ))}
         

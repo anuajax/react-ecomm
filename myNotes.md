@@ -50,3 +50,10 @@ This is always re-rendering our componnets
       use a map map collectionId string to integer 
       the selector of Collection Page requires a part of state depending on URL parameter
       so state is passed explicitly to its mapStateToProps
+  ## avoiding writing map for it Do data normalization i.e. convert your shop store from array to object
+     we needed individual elemnt inside reducer so find method on large array would be slow algorithm
+
+     our state has become an object selectCollections selector knows it is array
+     so CollectionsOverview is giving error...
+     lets write a new selector for it which convert Object into an Array
+  ## Object.keys()
