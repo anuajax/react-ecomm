@@ -1,5 +1,4 @@
 import React from 'react';
-import photo1 from  '../images/photo1.jpg';
 import './menuComp.styles.scss';
 import MenuItem from './menuItem.jsx';
 import {connect} from 'react-redux';

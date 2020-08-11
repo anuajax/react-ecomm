@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import FormInput from '../../form components/formInput';
 import CustomButton from '../../form components/form-buttons';
-import {Card} from '@material-ui/core';
-import {ReactComponent as Google} from '../../../assets/google-icon.svg';
 import './signin.styles.scss';
 
 import {auth, signInWithGoogle} from '../../../firebase/firebase.utils';

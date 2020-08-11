@@ -37,3 +37,16 @@ This is always re-rendering our componnets
       eg: /shop to /shop/hats
       moved all the shop page collection logic into its child component(CollectionOverview) (connected to redux obviously)
       then apply Switch and Router in the Shop collection component.
+   ## When having nested Routes , Route to the parent component should not have exact paramter otherwise
+   ## otherwise the child route component will not be rendered.
+   eg: in App.js   <Route path='/shop' component={ShopPage} />
+         in ShopPage.js it has access to match , history and location
+            nesting: <Route exact path={`${match.path}`} component={CollectionOverview}/>
+                     <Route path={`${match.path}/:collectionId`} component={CollectionPage}/>
+               now CollectionPage will be rendered properly.(also have access to match)
+
+
+# collectionId is a number in the data but a string in the Route?? 
+      use a map map collectionId string to integer 
+      the selector of Collection Page requires a part of state depending on URL parameter
+      so state is passed explicitly to its mapStateToProps

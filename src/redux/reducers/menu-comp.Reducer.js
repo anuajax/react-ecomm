@@ -36,21 +36,21 @@ const INITIAL_STATE = {
         title: 'MEN',
         imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
        
-        id: 5,
+        id: 6,
         linkUrl: 'shop/mens'
       },
       {
         title: 'MEN',
         imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
       
-        id: 5,
+        id: 7,
         linkUrl: 'shop/mens'
       },
       {
         title: 'MEN',
         imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
        
-        id: 5,
+        id: 8,
         linkUrl: 'shop/mens'
       }
   ]

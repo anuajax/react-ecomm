@@ -4,7 +4,7 @@ import './cart-icon.styles.scss';
 
 import {connect} from 'react-redux';
 import { toggleCartDropDown } from '../../redux/actions/actionCreators/cart-drop.actions.creator.js' ;
-import {selectCartItems,selectCartItemsCount} from '../../redux/selectors/cart.selectors';
+import {selectCartItemsCount} from '../../redux/selectors/cart.selectors';
 const CartIcon = ({ toggleCartDropDown, itemCount })=> (
     <div className='cart-icon' onClick={toggleCartDropDown}>
         <ShoppingIcon className='shopping-icon'/>

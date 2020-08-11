@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './header-nav.styles.scss'
 import {ReactComponent as Logo} from '../../assets/4.3 crown.svg.svg';
 import { Link} from 'react-router-dom';
-import {ReactComponent as LikeButton} from '../../assets/icons8-heart-outline-24.png';
 import {auth} from '../../firebase/firebase.utils';
 import {connect}  from 'react-redux';
 import CartIcon from '../cart-Icon/cart-icon.component';
@@ -11,7 +10,6 @@ import CartDropdown from '../cart-DropDown/cart-dropdown';
 
 import {selectCurrentUser} from '../../redux/selectors/user.selectors';
 import {selectCartHidden}  from '../../redux/selectors/cart.selectors';
-import {createStructuredSelector} from 'reselect';
 
 
 const Navigation = ({currentUser,hidden}) => (

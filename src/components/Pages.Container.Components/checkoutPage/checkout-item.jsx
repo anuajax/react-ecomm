@@ -1,6 +1,5 @@
 import React from 'react';
 import './checkout-item.styles.scss';
-import Divider from '@material-ui/core/Divider';
 import { Button } from '@material-ui/core';
 import {connect } from 'react-redux';
 import {clearItemFromCheckout,addItemsAction,removeItemFromCart} from '../../../redux/actions/actionCreators/cart-drop.actions.creator';
