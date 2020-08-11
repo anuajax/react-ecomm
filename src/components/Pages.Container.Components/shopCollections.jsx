@@ -1,7 +1,7 @@
 import React from 'react';
 // import SHOP_DATA from './shop.data.default.State.js'; moved to redux
 
-import {Switch,Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 import CollectionOverview from '../collection-overview/collection-overview';
 import CollectionPage from './collection.category-page/collection.Page.component';

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PreviewItem from '../../preview.collectionComp/preview.Item';
 import {selectCollection} from '../../../redux/selectors/shop.collection.selectors.js';
 import {connect} from 'react-redux';

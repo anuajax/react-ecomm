@@ -60,6 +60,13 @@ This is always re-rendering our componnets
 
 
 
-  # Integrating Stripe
+  # Integrating Stripe using StripeButton component
       Got the test mode ..
       to do real payment need to work out with the token and write some backend code
+
+   ## only backend in our App : Stripe Integration part and Firebase saving data(GraphQL queries)
+      ## MAking store in backend to leverage GraphQL
+
+# Hosting on Heroku as a static website
+heroku create myntraclone --buildpack https://github.com/mars/create-react-app-buildpack.git
+   using this buildpack we dont have to npm build 
