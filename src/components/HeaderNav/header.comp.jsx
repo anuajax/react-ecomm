@@ -1,35 +1,33 @@
 import React from 'react';
-import './header-nav.styles.scss'
 import {ReactComponent as Logo} from '../../assets/4.3 crown.svg.svg';
-import { Link} from 'react-router-dom';
 import {auth} from '../../firebase/firebase.utils';
 import {connect}  from 'react-redux';
 import CartIcon from '../cart-Icon/cart-icon.component';
 import CartDropdown from '../cart-DropDown/cart-dropdown';
 
-
+import {HeaderContainer,LogoContainer,OptionsContainer,OptionLink,OptionDiv} from './header.styles';
 import {selectCurrentUser} from '../../redux/selectors/user.selectors';
 import {selectCartHidden}  from '../../redux/selectors/cart.selectors';
 
 
 const Navigation = ({currentUser,hidden}) => (
-    <div className="header-nav">
-        <Link to="/">
+    <HeaderContainer>
+        <LogoContainer to="/">
             <Logo className="logo"/>
-        </Link>
-        <div className="nav-items">
-        <Link className="nav-item nav-item-ltr" to="/shop">
+        </LogoContainer>
+        <OptionsContainer>
+        <OptionLink className="nav-item nav-item-ltr" to="/shop">
             SHOP
-        </Link>
-        <Link className="nav-item nav-item-ltr" to="/contact">
+        </OptionLink>
+        <OptionLink className="nav-item nav-item-ltr" to="/contact">
             CONTACT
-        </Link>
-        {currentUser===null ? <Link className="nav-item nav-item-ltr" to="/signin">SIGNIN</Link> :
-                                 <div className="nav-item nav-item-ltr" onClick={()=>auth.signOut()}>SIGNOUT</div>}
+        </OptionLink>
+        {currentUser===null ? <OptionLink className="nav-item nav-item-ltr" to="/signin">SIGNIN</OptionLink> :
+                                 <OptionDiv className="nav-item nav-item-ltr" onClick={()=>auth.signOut()}>SIGNOUT</OptionDiv>}
                                  <CartIcon  />
-         </div>
+         </OptionsContainer>
           { hidden ? null: <CartDropdown/> } 
-    </div>
+    </HeaderContainer>
 )
 //advanced destructuring: state
 const mapStateToProps = (state) => ({

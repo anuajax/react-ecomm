@@ -70,3 +70,10 @@ This is always re-rendering our componnets
 # Hosting on Heroku as a static website
 heroku create myntraclone --buildpack https://github.com/mars/create-react-app-buildpack.git
    using this buildpack we dont have to npm build 
+
+
+ #  PART II
+  1. CSS in JS writing styles in JS files and passing it as style value to the html(JSX) elements
+      making CSS sccoped only to that component...so called styled component
+      Problem with CSS-scope is global
+      can leverage props to control the styles(Conditionally)---can be helpful to create Dark mode/Light mode

@@ -6,14 +6,14 @@ import {Route,Switch,Redirect} from 'react-router-dom';
 import ShopPage from './components/Pages.Container.Components/shopCollections.jsx';
 import Navigation from './components/HeaderNav/header.comp.jsx';
 import SignInAndSignUp from './components/Pages.Container.Components/LoginRegister/login-register';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument, addShopCollectionsAndDocuments } from './firebase/firebase.utils';
 import Checkout from './components/Pages.Container.Components/checkoutPage/checkout.copmponent';
 
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/actions/actionCreators/user.actions.creator';
 import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from './redux/selectors/user.selectors';
-
+import {selectCollectionsForPreview} from './redux/selectors/shop.collection.selectors';
 class App extends React.Component {
   
   unsubscribeFromAuth = null;
@@ -32,6 +32,7 @@ class App extends React.Component {
       }
 
       this.props.setCurrentUser(userAuth);
+      addShopCollectionsAndDocuments('collections',this.props.collectionsArray.map(({title,items})=> ({title,items})));
     });
   }
 
@@ -39,7 +40,7 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
   render()
-  {
+  { 
     
   return (
     <div className="App">
@@ -57,7 +58,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  collectionsArray: selectCollectionsForPreview
 })
 const mapDispatchToProps = dispatch => ({
     setCurrentUser: user => dispatch(setCurrentUser(user))
