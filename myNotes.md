@@ -77,3 +77,67 @@ heroku create myntraclone --buildpack https://github.com/mars/create-react-app-b
       making CSS sccoped only to that component...so called styled component
       Problem with CSS-scope is global
       can leverage props to control the styles(Conditionally)---can be helpful to create Dark mode/Light mode
+
+   # FireBase
+      ## firestore.batch()
+      and creating a collectionReference and adding objects to it using .set() method
+      ## batch.commit() 
+               returns a Promise
+            entered data to firestore using code..
+            (...this )
+            now we will write mechanism to retieve info from firebase
+            and then we can remove componentDidMount because we dont need to load 
+   ## this  pattern of onSnapShot and onAuthStateChanged
+         these are called OBSERVALBLE and OBSERVER pattern
+      ## Observer :
+            err, done, next
+      ## Observable :
+            stram of operations being performed.
+         firebase is alive database , upadtes can always  happen , done callback may not be called.so we dont write
+         Mostly we pass a function..next function 
+         one example: auth.onAuthStateChanged(user=> {});
+         So when component unmounts, we do unSubscribe
+   ## In companies we wont likely use Firebase Observable pattern which involves subscription scheme(RxJS type)
+    - Rather we will be using a PROMISE based pattern by writing our own API.
+    So now we try to make API routes from our firebase...just like MongoDB.
+     - 2 ways:
+       i) Still use CollectionRef object returned from firestore but use it as Promise rather than applying observables.
+            - use .get().then() instead of snapshot. pass snapShot info inside .then()
+         ## caveat: - we get new data from backend only after component remounts...not real-time behaviour.
+       ii) Use standard fetch to replace this observable scheme.
+
+   # Why do we want to handle fetching of data logic to put into redux rather than having it inside the componentDidMount of ShopPage?
+      i) if any other page requires this data-we dont wanna write same logic again for that page's componentDidMount
+      ii) dont wanna put this at top level at APP js unnecessaryily loding so much data in the App.
+            App component is alwys mounting (top level) so performance degrades if lot of data to load on Mounting
+    So move the logic to perform asynchronous redux action to fetch data from backend.
+
+
+    # Redux-Thunk:  (a middleware that catches actions(functions, not objects))
+         ## So it only needs to talk with actions that return functions/not objects..
+            here fetchCollectionsStartAsync()
+            So redux thunk dispatches those object returning action to reducers
+      ## main role of thunk is to give dispatch through which we can give synchronous action objects to our reducer 
+     Just a middleware that allows to fire async functions for an API call.
+     put this in store. as middleware
+     earlier componentDidMount was doing API call , now reducer will do that.
+
+     there is a pattern for it: action types for async API calls:
+               action_start,action_success,action_failure ---isFetching: false/true
+     Actual Thunk implementation can be seen in action creators.
+
+3 action creators and 1 for handling the Async logic:
+the async one is used to dispatch async actions as functions
+thunk needs to call the function(to be dispatched) with dispatch method itself as its first argument 
+So take care in mapDispatchToProps as it needs a function to return a function using dispatch method.
+
+Shoppage component was using external API call it was associated with redux-thunk.
+
+
+# Collection Page with Spinner HOC is having issue..with thunk operation
+   this happens because
+   ComponentDidMount works only after render method is called
+   default fetching value(which is false) is called for Collection With Spinner component 
+Just write a new selector for handling this.
+   ## Dont put asunc API request in constructor,, put in ComponentDidMount rather.
+   ## !! operator makes anything false, be it string or object
