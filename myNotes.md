@@ -140,4 +140,14 @@ Shoppage component was using external API call it was associated with redux-thun
    default fetching value(which is false) is called for Collection With Spinner component 
 Just write a new selector for handling this.
    ## Dont put asunc API request in constructor,, put in ComponentDidMount rather.
-   ## !! operator makes anything false, be it string or object
+   ## !! operator makes anything boolean false, be it string or object
+
+# Separating out CollectionOverviewWithSpinner and CollectionPageWithSpinner in  a separate component
+      wrapping mapStateToProps from di
+
+ ## container component is:
+   a comp that gets wrapped in the all Hoc's it needs
+
+   **use compose - a redux library concept to structure the wrapping of Higher order Components.--Performs
+   currying.
+   Containers dont render anything , they just pass down props acts as a wrapper for Components.
